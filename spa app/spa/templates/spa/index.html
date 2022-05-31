@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {background-color: whitesmoke;}
+        
+        div {
+            background-color: dodgerblue;
+            padding: 1em;
+            margin: 1em;
+        }
+    </style>
+
+    <script>
+
+        function showPage(page) {
+            fetch(page)
+            .then(response => response.text())
+            .then(text => {
+                document.querySelector('#conteudo').innerHTML = text;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            document.querySelectorAll('button').forEach(button => {
+                button.onclick = function() {
+                    showPage(button.dataset.page);
+                }
+
+            });
+
+
+        });
+    </script>
+
+
+</head>
+<body>
+
+    <h1>Single Page Application</h1>
+    
+    <button data-page="page1">Página 1</button>
+    <button data-page="page2">Página 2</button>
+    <button data-page="page3">Página 3</button>
+
+    <div id="conteudo"></div>
+   
+</body>
+</html>

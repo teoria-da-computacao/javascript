@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div { display:none;}
+    </style>
+
+    <script>
+
+        function showPage(page) {
+            // apagar tudo
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            });
+            // mostrar o que queremos
+            document.querySelector('#' + page).style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            document.querySelectorAll('button').forEach(button => {
+                button.onclick = function() {
+                    showPage(button.dataset.page);
+                }
+
+            });
+
+
+        });
+    </script>
+
+</head>
+<body>
+
+    <button data-page="page1">Página 1</button>
+    <button data-page="page2">Página 2</button>
+    <button data-page="page3">Página 3</button>
+
+    <div id="page1">Esta é a página 1</div>
+    <div id="page2">Esta é a página 2</div>
+    <div id="page3">Esta é a página 3</div>
+
+</body>
+</html>
